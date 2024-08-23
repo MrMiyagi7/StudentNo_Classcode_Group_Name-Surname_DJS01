@@ -1,3 +1,5 @@
+addEventListener("load", displayIntialValue);
+
 // Given Parameters
 const velocityKmh = 10000; // velocity (km/h)
 const acccerlartionMs2 = 3; // acceleration (m/s^2)
@@ -73,3 +75,5 @@ function displayLandingValues() {
 console.log(`Corrected New Velocity: ${newVelocityKmH.toFixed(2)} km/h`);
 console.log(`Corrected New Distance: ${newDistanceKm.toFixed(2)} km`);
 console.log(`Corrected Remaining Fuel: ${remainingFuelKg.toFixed(2)} kg`);
+
+landBtn.addEventListener("click", displayLandingValues);
