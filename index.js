@@ -7,9 +7,13 @@ const initialFuelKg = 5000; // remaining fuel (kg)
 const fuelBurnRateKgS = 0.5; // fuel burn rate (kg/s)
 
 // Helper Functions
-const convertMs2ToKmh2 = (accMs2) => accMs2 * 12960;
+const convertMs2ToKmh2 = (accMs2) => accMs2 * 12960; //1 m/s^2 = 12960 km/h^2
+const convertSecToHour = (Sec) => Sec / 3600; // 3600 seconds = 1 hour
 
-const newDistanceKm = initialDistanceKm + velocityKmh * timeSeconds; //calcultes new distance
+// Calculate the corrected new distance
+const newDistanceKm =
+  initialDistanceKm + velocityKmh * convertSecToHour(timeSeconds); // Convert time to hours and calculate distance
+
 const remainingFuelKg = fuelBurnRateKgS * timeSeconds; //calculates remaining fuel
 const newVelocityKmH = calcNewVel(acccerlartionMs2, velocityKmh, timeSeconds); //calculates new velocity based on acceleration
 
