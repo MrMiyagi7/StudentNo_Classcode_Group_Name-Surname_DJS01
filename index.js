@@ -14,7 +14,9 @@ const convertSecToHour = (Sec) => Sec / 3600; // 3600 seconds = 1 hour
 const newDistanceKm =
   initialDistanceKm + velocityKmh * convertSecToHour(timeSeconds); // Convert time to hours and calculate distance
 
-const remainingFuelKg = fuelBurnRateKgS * timeSeconds; //calculates remaining fuel
+// Calculate the corrected remaining fuel
+const remainingFuelKg = initialFuelKg - fuelBurnRateKgS * timeSeconds;
+
 const newVelocityKmH = calcNewVel(acccerlartionMs2, velocityKmh, timeSeconds); //calculates new velocity based on acceleration
 
 // Pick up an error with how the function below is called and make it robust to such errors
