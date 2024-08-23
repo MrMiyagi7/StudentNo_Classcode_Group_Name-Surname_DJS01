@@ -56,6 +56,20 @@ function displayIntialValue() {
   </ul>`;
 }
 
+// Output the corrected values
+
+function displayLandingValues() {
+  monitor.innerHTML = `<ul>
+  <li>Landing velocity: ${newVelocityKmH} Km/H</li>
+   <li>Landing Accleration: ${convertMs2ToKmh2(accelerationMs2)} Km/H²</li>
+   <li>
+   Distance: ${newDistanceKm} km
+   </li>
+   <li>Fuel Level: ${remainingFuelKg} km </li>
+  </ul>`;
+  landBtn.style.display = "none";
+}
+
 console.log(`Corrected New Velocity: ${newVelocityKmH.toFixed(2)} km/h`);
 console.log(`Corrected New Distance: ${newDistanceKm.toFixed(2)} km`);
 console.log(`Corrected Remaining Fuel: ${remainingFuelKg.toFixed(2)} kg`);
