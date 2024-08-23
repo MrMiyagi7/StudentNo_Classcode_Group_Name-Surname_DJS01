@@ -41,13 +41,11 @@ const remainingFuelKg = initialFuelKg - fuelBurnRateKgS * timeSeconds;
 if (remainingFuelKg < 0) {
   throw new Error("Remaining fuel cannot be negative.");
 }
+// DOM Elements
+const newVelocityKmH = calcNewVel(acccerlartionMs2, velocityKmh, timeSeconds);
 
-const newVelocityKmH = calcNewVel(acccerlartionMs2, velocityKmh, timeSeconds); //calculates new velocity based on acceleration
-
-// Pick up an error with how the function below is called and make it robust to such errors
-calcNewVel = (velocityKmh, acccerlartionMs2, timeSeconds) => {
-  return velocityKmh + acccerlartionMs2 * timeSeconds;
-};
+const monitor = document.getElementById("monitor");
+const landBtn = document.getElementById("land-btn");
 
 console.log(`Corrected New Velocity: ${newVelocityKmH.toFixed(2)} km/h`);
 console.log(`Corrected New Distance: ${newDistanceKm.toFixed(2)} km`);
