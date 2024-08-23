@@ -47,6 +47,15 @@ const newVelocityKmH = calcNewVel(acccerlartionMs2, velocityKmh, timeSeconds);
 const monitor = document.getElementById("monitor");
 const landBtn = document.getElementById("land-btn");
 
+// Output inital values
+function displayIntialValue() {
+  monitor.innerHTML = `<ul>
+  <li>Current velocity: ${velocityKmH} Km/H</li>
+   <li>Current Accleration: ${convertMs2ToKmh2(accelerationMs2)} Km/H²</li>
+   <li>Fuel Level: ${initialFuelKg} kg</li>
+  </ul>`;
+}
+
 console.log(`Corrected New Velocity: ${newVelocityKmH.toFixed(2)} km/h`);
 console.log(`Corrected New Distance: ${newDistanceKm.toFixed(2)} km`);
 console.log(`Corrected Remaining Fuel: ${remainingFuelKg.toFixed(2)} kg`);
