@@ -10,6 +10,26 @@ const fuelBurnRateKgS = 0.5; // fuel burn rate (kg/s)
 const convertMs2ToKmh2 = (accMs2) => accMs2 * 12960; //1 m/s^2 = 12960 km/h^2
 const convertSecToHour = (Sec) => Sec / 3600; // 3600 seconds = 1 hour
 
+// Function to calculate new velocity considering unit conversion and validation
+const calcNewVel = (velocityKmH, accelerationMs2, timeSeconds) => {
+  if (
+    typeof velocityKmH !== "number" ||
+    typeof accelerationMs2 !== "number" ||
+    typeof timeSeconds !== "number"
+  ) {
+    throw new Error("All parameters must be numbers.");
+  }
+
+  if (accelerationMs2 < 0 || timeSeconds < 0) {
+    throw new Error("Acceleration and time must be non-negative.");
+  }
+  const accelerationKmh2 = convertMs2ToKmh2(accelerationMs2); // Convert acceleration to km/h^2
+  const timeHours = convertSecToHour(timeSeconds);
+  const newVelocityKmH = velocityKmH + accelerationKmh2 * timeHours; // Convert time to hours and calculate
+
+  return newVelocityKmH;
+};
+
 // Calculate the corrected new distance
 const newDistanceKm =
   initialDistanceKm + velocityKmh * convertSecToHour(timeSeconds); // Convert time to hours and calculate distance
