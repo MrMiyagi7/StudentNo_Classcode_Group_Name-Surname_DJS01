@@ -1,14 +1,36 @@
+/* Animations */
+@keyframes takeoff {
+  0% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(-1050px);
+  }
+}
+
+/* Variables */
+
+:root {
+  --primary: #020622;
+  --secondary: #323d5b;
+  --main-color-font: #13e9f4;
+}
+
 /* Reset some default styles for the page */
 body,
 p {
   margin: 0;
   padding: 0;
   background-color: black;
+  font-family: "VT323", monospace;
+  font-weight: 400;
+  font-style: normal;
+  color: var(--main-color-font);
 }
 
 body {
   background-image: url("./Assets/Leonardo_Phoenix_A_futuristic_animated_cockpit_of_a_spacecraft_1.jpg");
-  background-size: cover;
+  /* background-size: cover; */
   background-repeat: no-repeat;
   background-position: center; /* Center the background image */
   /* background-attachment: fixed; Optional: Keeps the background fixed */
@@ -21,8 +43,64 @@ body {
 
 /* Style the h1 element */
 h1 {
+  display: none;
   font-weight: bold;
   font-size: 20px;
   text-align: center;
   color: white; /* Change text color to white */
+}
+
+#rocket-gif-div {
+  display: flex;
+  gap: 65rem;
+  animation: takeoff 5s linear infinite;
+  position: absolute;
+  bottom: -300px;
+}
+
+.rocket-gif {
+  width: 20rem;
+}
+
+#land-btn {
+  font-size: 2rem;
+  color: var(--main-color-font);
+  background-color: var(--primary);
+  border: 3px solid var(--secondary);
+  border-radius: 15px;
+  position: absolute;
+  top: 220px;
+}
+
+#land-btn:hover {
+  color: var(--primary);
+  background-color: var(--main-color-font);
+}
+#monitor {
+  background-color: var(--primary);
+  position: absolute;
+  top: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid var(--secondary);
+  border-radius: 15px;
+}
+#monitor > ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 1rem;
+}
+
+ul > li {
+  text-align: left;
+  font-size: 1.5rem;
+}
+
+/* Media Queries */
+/* responsiveness still needs more work for smaller screens */
+@media only screen and (max-width: 1000px) {
+  .rocket-gif {
+    display: none;
+  }
 }
