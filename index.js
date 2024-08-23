@@ -2,18 +2,19 @@ addEventListener("load", displayIntialValue);
 
 // Given Parameters
 const velocityKmh = 10000; // velocity (km/h)
-const acccerlartionMs2 = 3; // acceleration (m/s^2)
+const accelerationMs2 = 3; // Acceleration in m/s^2
 const timeSeconds = 3600; // seconds (1 hour)
 const initialDistanceKm = 0; // distance (km)
 const initialFuelKg = 5000; // remaining fuel (kg)
 const fuelBurnRateKgS = 0.5; // fuel burn rate (kg/s)
+console.log(accelerationMs2);
 
 // Helper Functions
 const convertMs2ToKmh2 = (accMs2) => accMs2 * 12960; //1 m/s^2 = 12960 km/h^2
 const convertSecToHour = (Sec) => Sec / 3600; // 3600 seconds = 1 hour
 
 // Function to calculate new velocity considering unit conversion and validation
-const calcNewVel = (velocityKmH, accelerationMs2, timeSeconds) => {
+const calcNewVel = (accelerationMs2, velocityKmH, timeSeconds) => {
   if (
     typeof velocityKmH !== "number" ||
     typeof accelerationMs2 !== "number" ||
@@ -21,13 +22,14 @@ const calcNewVel = (velocityKmH, accelerationMs2, timeSeconds) => {
   ) {
     throw new Error("All parameters must be numbers.");
   }
-
+  console.log(accelerationMs2);
   if (accelerationMs2 < 0 || timeSeconds < 0) {
     throw new Error("Acceleration and time must be non-negative.");
   }
   const accelerationKmh2 = convertMs2ToKmh2(accelerationMs2); // Convert acceleration to km/h^2
+  console.log(accelerationKmh2);
   const timeHours = convertSecToHour(timeSeconds);
-  const newVelocityKmH = velocityKmH + accelerationKmh2 * timeHours; // Convert time to hours and calculate
+  const newVelocityKmH = velocityKmh + accelerationKmh2 * timeHours; // Convert time to hours and calculate
 
   return newVelocityKmH;
 };
@@ -44,7 +46,7 @@ if (remainingFuelKg < 0) {
   throw new Error("Remaining fuel cannot be negative.");
 }
 // DOM Elements
-const newVelocityKmH = calcNewVel(acccerlartionMs2, velocityKmh, timeSeconds);
+const newVelocityKmH = calcNewVel(accelerationMs2, velocityKmh, timeSeconds);
 
 const monitor = document.getElementById("monitor");
 const landBtn = document.getElementById("land-btn");
@@ -52,7 +54,7 @@ const landBtn = document.getElementById("land-btn");
 // Output inital values
 function displayIntialValue() {
   monitor.innerHTML = `<ul>
-  <li>Current velocity: ${velocityKmH} Km/H</li>
+  <li>Current velocity: ${velocityKmh} Km/H</li>
    <li>Current Accleration: ${convertMs2ToKmh2(accelerationMs2)} Km/H²</li>
    <li>Fuel Level: ${initialFuelKg} kg</li>
   </ul>`;
