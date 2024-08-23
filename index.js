@@ -49,6 +49,6 @@ calcNewVel = (velocityKmh, acccerlartionMs2, timeSeconds) => {
   return velocityKmh + acccerlartionMs2 * timeSeconds;
 };
 
-console.log(`Corrected New Velocity: ${newVelocityKmH} km/h`);
-console.log(`Corrected New Distance: ${d2} km`);
-console.log(`Corrected Remaining Fuel: ${rf} kg`);
+console.log(`Corrected New Velocity: ${newVelocityKmH.toFixed(2)} km/h`);
+console.log(`Corrected New Distance: ${newDistanceKm.toFixed(2)} km`);
+console.log(`Corrected Remaining Fuel: ${remainingFuelKg.toFixed(2)} kg`);
