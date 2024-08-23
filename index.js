@@ -17,6 +17,11 @@ const newDistanceKm =
 // Calculate the corrected remaining fuel
 const remainingFuelKg = initialFuelKg - fuelBurnRateKgS * timeSeconds;
 
+// Ensure remaining fuel is not negative
+if (remainingFuelKg < 0) {
+  throw new Error("Remaining fuel cannot be negative.");
+}
+
 const newVelocityKmH = calcNewVel(acccerlartionMs2, velocityKmh, timeSeconds); //calculates new velocity based on acceleration
 
 // Pick up an error with how the function below is called and make it robust to such errors
